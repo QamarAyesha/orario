@@ -1,0 +1,502 @@
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/flutter_flow_util.dart';
+import 'dart:ui';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import 'today_tasks_model.dart';
+export 'today_tasks_model.dart';
+
+class TodayTasksWidget extends StatefulWidget {
+  const TodayTasksWidget({super.key});
+
+  @override
+  State<TodayTasksWidget> createState() => _TodayTasksWidgetState();
+}
+
+class _TodayTasksWidgetState extends State<TodayTasksWidget> {
+  late TodayTasksModel _model;
+
+  @override
+  void setState(VoidCallback callback) {
+    super.setState(callback);
+    _model.onUpdate();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _model = createModel(context, () => TodayTasksModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
+  }
+
+  @override
+  void dispose() {
+    _model.maybeDispose();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 0),
+          child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 3,
+                  color: Color(0x33000000),
+                  offset: Offset(
+                    0,
+                    1,
+                  ),
+                  spreadRadius: 0,
+                )
+              ],
+              gradient: LinearGradient(
+                colors: [
+                  FlutterFlowTheme.of(context).primary,
+                  FlutterFlowTheme.of(context).tertiary
+                ],
+                stops: [0, 1],
+                begin: AlignmentDirectional(0, -1),
+                end: AlignmentDirectional(0, 1),
+              ),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(16, 16, 16, 16),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        'Today\'s Tasks',
+                        style:
+                            FlutterFlowTheme.of(context).headlineSmall.override(
+                                  fontFamily: 'Sora',
+                                  letterSpacing: 0.0,
+                                ),
+                      ),
+                      Text(
+                        '5 Tasks',
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'Inter',
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              letterSpacing: 0.0,
+                            ),
+                      ),
+                    ],
+                  ),
+                  ListView(
+                    padding: EdgeInsets.zero,
+                    primary: false,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Theme(
+                                      data: ThemeData(
+                                        checkboxTheme: CheckboxThemeData(
+                                          visualDensity: VisualDensity.compact,
+                                          materialTapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        unselectedWidgetColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                      ),
+                                      child: Checkbox(
+                                        value: _model.checkboxValue1 ??= false,
+                                        onChanged: (newValue) async {
+                                          safeSetState(() => _model
+                                              .checkboxValue1 = newValue!);
+                                        },
+                                        side: BorderSide(
+                                          width: 2,
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                        ),
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        checkColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Review Project Proposal',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ].divide(SizedBox(width: 12)),
+                                ),
+                                Text(
+                                  '10:00 AM',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ].divide(SizedBox(width: 12)),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Theme(
+                                      data: ThemeData(
+                                        checkboxTheme: CheckboxThemeData(
+                                          visualDensity: VisualDensity.compact,
+                                          materialTapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        unselectedWidgetColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                      ),
+                                      child: Checkbox(
+                                        value: _model.checkboxValue2 ??= false,
+                                        onChanged: (newValue) async {
+                                          safeSetState(() => _model
+                                              .checkboxValue2 = newValue!);
+                                        },
+                                        side: BorderSide(
+                                          width: 2,
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                        ),
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        checkColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
+                                    ),
+                                    Text(
+                                      'CS project',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ].divide(SizedBox(width: 12)),
+                                ),
+                                Text(
+                                  '11:00 AM',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ].divide(SizedBox(width: 12)),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Theme(
+                                      data: ThemeData(
+                                        checkboxTheme: CheckboxThemeData(
+                                          visualDensity: VisualDensity.compact,
+                                          materialTapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        unselectedWidgetColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                      ),
+                                      child: Checkbox(
+                                        value: _model.checkboxValue3 ??= false,
+                                        onChanged: (newValue) async {
+                                          safeSetState(() => _model
+                                              .checkboxValue3 = newValue!);
+                                        },
+                                        side: BorderSide(
+                                          width: 2,
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                        ),
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        checkColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Piano Practice',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ].divide(SizedBox(width: 12)),
+                                ),
+                                Text(
+                                  '12:00 PM',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ].divide(SizedBox(width: 12)),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Theme(
+                                      data: ThemeData(
+                                        checkboxTheme: CheckboxThemeData(
+                                          visualDensity: VisualDensity.compact,
+                                          materialTapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        unselectedWidgetColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                      ),
+                                      child: Checkbox(
+                                        value: _model.checkboxValue4 ??= false,
+                                        onChanged: (newValue) async {
+                                          safeSetState(() => _model
+                                              .checkboxValue4 = newValue!);
+                                        },
+                                        side: BorderSide(
+                                          width: 2,
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                        ),
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        checkColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Make english presentation',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ].divide(SizedBox(width: 12)),
+                                ),
+                                Text(
+                                  '03:00 PM',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ].divide(SizedBox(width: 12)),
+                            ),
+                          ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: FlutterFlowTheme.of(context)
+                                .secondaryBackground,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Padding(
+                            padding: EdgeInsets.all(12),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Theme(
+                                      data: ThemeData(
+                                        checkboxTheme: CheckboxThemeData(
+                                          visualDensity: VisualDensity.compact,
+                                          materialTapTargetSize:
+                                              MaterialTapTargetSize.shrinkWrap,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(4),
+                                          ),
+                                        ),
+                                        unselectedWidgetColor:
+                                            FlutterFlowTheme.of(context)
+                                                .alternate,
+                                      ),
+                                      child: Checkbox(
+                                        value: _model.checkboxValue5 ??= false,
+                                        onChanged: (newValue) async {
+                                          safeSetState(() => _model
+                                              .checkboxValue5 = newValue!);
+                                        },
+                                        side: BorderSide(
+                                          width: 2,
+                                          color: FlutterFlowTheme.of(context)
+                                              .alternate,
+                                        ),
+                                        activeColor:
+                                            FlutterFlowTheme.of(context)
+                                                .primary,
+                                        checkColor:
+                                            FlutterFlowTheme.of(context).info,
+                                      ),
+                                    ),
+                                    Text(
+                                      'Exercise',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Inter',
+                                            letterSpacing: 0.0,
+                                          ),
+                                    ),
+                                  ].divide(SizedBox(width: 12)),
+                                ),
+                                Text(
+                                  '08:00 PM',
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodySmall
+                                      .override(
+                                        fontFamily: 'Inter',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        letterSpacing: 0.0,
+                                      ),
+                                ),
+                              ].divide(SizedBox(width: 12)),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ].divide(SizedBox(height: 8)),
+                  ),
+                ].divide(SizedBox(height: 12)),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}
